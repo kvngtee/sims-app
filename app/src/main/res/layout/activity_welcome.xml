@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212"
+    tools:context=".activities.WelcomeActivity">
+
+
+    <ImageView
+        android:id="@+id/welcomeimage"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/welcomeimage" />
+
+
+    <TextView
+        android:id="@+id/intro2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/welcomeimage"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/gotham"
+        android:text="Connect Students"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/into3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/intro2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textAlignment="center"
+        android:lineSpacingExtra="3dp"
+        android:fontFamily="@font/proximalight"
+        android:layout_marginEnd="20dp"
+        android:text="A simple way to communicate, inform and notify \nstudents about campus updates."
+        android:textColor="#ACACAC"
+        android:textSize="14sp" />
+
+
+    <Button
+        android:id="@+id/startbtn"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="30dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bubblebtn"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:fontFamily="@font/gotham"
+        android:textColor="@android:color/white"
+        android:textSize="13sp" />
+
+
+</RelativeLayout>

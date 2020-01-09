@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "837982852435",
+    "firebase_url": "https://ecampusofficial-896dc.firebaseio.com",
+    "project_id": "ecampusofficial-896dc",
+    "storage_bucket": "ecampusofficial-896dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837982852435:android:1e86ff930a2b04e2793da6",
+        "android_client_info": {
+          "package_name": "com.example.ecampus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837982852435-tobbm5u5flnj25l175vnlhpr1te4h3jd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg2zNSGYFmtGO5ac5HjUP2IkZ2XEumNHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837982852435-tobbm5u5flnj25l175vnlhpr1te4h3jd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

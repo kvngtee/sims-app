@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">eCampus</string>
+
+    <string name="back"><![CDATA[<<Back]]></string>
+
+    <string name="facebook_app_id">519271795304522</string>
+    <string name="fb_login_protocol_scheme">fb519271795304522</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

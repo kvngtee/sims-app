@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginBottom="5dp"
+    android:clickable="false"
+    android:elevation="10dp"
+    android:id="@+id/container"
+    app:cardBackgroundColor="#1B1B1B"
+    app:cardCornerRadius="18dp"
+    android:layout_width="match_parent"
+    android:background="#2B2B2B"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/category"
+                style="@style/button"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_gravity="top|start"
+                android:background="@drawable/rounded_shapefill"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:fontFamily="@font/proximasemibold"
+                android:text="Category"
+                android:textAlignment="center"
+                android:textColor="#ECEAEA"
+                android:textSize="11sp" />
+
+
+        </RelativeLayout>
+
+        <com.github.curioustechizen.ago.RelativeTimeTextView
+            android:id="@+id/dateposted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:text="28 Sep 2019"
+            android:textColor="#8A8A8A"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/notice_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="6dp"
+        android:ellipsize="end"
+        android:lineSpacingExtra="-2dp"
+        android:fontFamily="@font/proximabold"
+        android:maxLines="15"
+        android:text="Notice Text"
+        android:textColor="#F5F2F2"
+        android:textSize="16sp" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="20dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/seen"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="3dp"
+            android:clickable="true"
+            android:src="@drawable/eye" />
+
+        <TextView
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:text="3.5M"
+            android:textColor="#8A8A8A"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+</androidx.cardview.widget.CardView>

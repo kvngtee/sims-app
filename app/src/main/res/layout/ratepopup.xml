@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:elevation="10dp"
+    android:layout_gravity="center"
+    app:cardBackgroundColor="#1B1B1B"
+    app:cardCornerRadius="13dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ratedark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/proximabold"
+                android:text="How Was Your Experience?"
+                android:textSize="18sp"
+                android:textColor="#F5F2F2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="If you enjoy using this app, would you mind\ntaking a moment to rate it? It won't take more\nthan a minute. Thanks for your support!"
+                android:fontFamily="@font/proximasemibold"
+                android:textSize="13sp"
+                android:textColor="#8A8A8A" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/maybelater"
+                android:layout_width="90dp"
+                android:layout_height="35dp"
+                android:layout_gravity="start"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/gotham"
+                android:text="MAYBE LATER"
+                android:layout_weight="1"
+                android:layout_marginEnd="95dp"
+                android:textAllCaps="false"
+                android:textColor="#FF6F00"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/ratenow"
+                android:layout_width="90dp"
+                android:layout_height="35dp"
+                android:layout_gravity="end"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/gotham"
+                android:text="RATE NOW"
+                android:textAllCaps="false"
+                android:textColor="#FF6F00"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
