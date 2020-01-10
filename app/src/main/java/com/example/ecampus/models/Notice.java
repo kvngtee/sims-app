@@ -1,22 +1,21 @@
 package com.example.ecampus.models;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Notice {
 
     private String category;
     private String noticetext;
-   // private Date date;
+    private Date date;
 
-    public Notice(){
+    public Notice() {
 
     }
 
-    public Notice(String category, String noticetext) {
+    public Notice(String category, String noticetext , Date date) {
         this.category = category;
         this.noticetext = noticetext;
-       // this.date = date;
+        this.date = date;
     }
 
     public String getCategory() {
@@ -27,10 +26,8 @@ public class Notice {
         return noticetext;
     }
 
-   // public Date getDate() {
-       /// return date;
-   // }
+    public Date getDate() {
+        return date;
+    }
 
 }
-  //  SimpleDateFormat sfd = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-  // sfd.format(new Date(timestamp))

@@ -77,19 +77,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
             newsDate = view.findViewById(R.id.dateposted);
             newsImage = view.findViewById(R.id.news_image);
 
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent postdetails = new Intent(mcontext, PostDetailActivity.class);
-                    int postion = getAdapterPosition();
+            view.setOnClickListener(v -> {
+                Intent postdetails = new Intent(mcontext, PostDetailActivity.class);
+                int postion = getAdapterPosition();
 
-                    postdetails.putExtra("title",mList.get(postion).getTitle());
-                    postdetails.putExtra("desc",mList.get(postion).getDesc());
-                    postdetails.putExtra("image",mList.get(postion).getImage());
-                    postdetails.putExtra("date",mList.get(postion).getDate());
-                    mcontext.startActivity(postdetails);
+                postdetails.putExtra("title",mList.get(postion).getTitle());
+                postdetails.putExtra("desc",mList.get(postion).getDesc());
+                postdetails.putExtra("image",mList.get(postion).getImage());
+                postdetails.putExtra("date",mList.get(postion).getDate());
+                mcontext.startActivity(postdetails);
 
-                }
             });
 
 

@@ -43,6 +43,10 @@ dependencies {
     implementation 'com.mikhaellopez:circularimageview:3.0.2'
     implementation 'com.github.florent37:diagonallayout:1.0.9'
     implementation 'com.flaviofaria:kenburnsview:1.0.7'
+    implementation 'com.codesgood:justifiedtextview:1.1.0'
+
+    // Shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
 
 
     //Stylish edittextbox
@@ -64,9 +68,11 @@ dependencies {
 
     //picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+
     // picasso caching libraries
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+
     //time ago
     implementation 'com.github.curioustechizen.android-ago:library:1.4.0'
 

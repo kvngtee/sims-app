@@ -10,7 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,6 +31,8 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 public class PostDetailActivity extends AppCompatActivity {
 
@@ -69,20 +70,18 @@ public class PostDetailActivity extends AppCompatActivity {
         mdescTv = findViewById(R.id.news_desc);
         mImageIv = findViewById(R.id.news_image);
         mdateTv = findViewById(R.id.dateposted);
-        mdescTv.setMovementMethod(new ScrollingMovementMethod());
 
         //get data from intent
         String image = getIntent().getStringExtra("image");
         String title = getIntent().getStringExtra("title");
         String desc = getIntent().getStringExtra("desc");
-        String date = getIntent().getStringExtra("date");
+        long date = getIntent().getLongExtra("date",0);
 
         //set data views
         mtitleTv.setText(title);
         mdescTv.setText(desc);
-        mdateTv.setText(date);
+        mdateTv.setReferenceTime(date);
         Picasso.get().load(image).into(mImageIv);
-
 
     }
 
@@ -198,4 +197,3 @@ public class PostDetailActivity extends AppCompatActivity {
         }
     }
 }
-

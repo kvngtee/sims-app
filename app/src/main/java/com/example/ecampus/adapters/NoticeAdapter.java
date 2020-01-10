@@ -29,8 +29,7 @@ public class NoticeAdapter extends FirestoreRecyclerAdapter<Notice, NoticeAdapte
     protected void onBindViewHolder(@NonNull NoticeHolder holder, int position, @NonNull Notice notice) {
         holder.noticetv.setText(notice.getNoticetext());
         holder.noticecattv.setText(notice.getCategory());
-        //holder.noticedatetv.setReferenceTime(notice.getDate().getTime());
-        //holder.newsDate.setReferenceTime(news.getDate().getTime());
+        holder.noticedatetv.setReferenceTime(notice.getDate().getTime());
 
         holder.container.setAnimation(AnimationUtils.loadAnimation(mcontext, R.anim.scroll_transition));
 
@@ -50,11 +49,9 @@ public class NoticeAdapter extends FirestoreRecyclerAdapter<Notice, NoticeAdapte
     class NoticeHolder extends RecyclerView.ViewHolder {
         TextView noticetv;
         TextView noticecattv;
-        //RelativeTimeTextView noticedatetv;
+        RelativeTimeTextView noticedatetv;
 
         CardView container;
-
-
 
 
 
@@ -64,7 +61,7 @@ public class NoticeAdapter extends FirestoreRecyclerAdapter<Notice, NoticeAdapte
             container = itemView.findViewById(R.id.container);
             noticetv = itemView.findViewById(R.id.notice_text);
             noticecattv = itemView.findViewById(R.id.category);
-            //noticedatetv = itemView.findViewById(R.id.dateposted);
+            noticedatetv = itemView.findViewById(R.id.dateposted);
         }
     }
 
