@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ecampus.R;
 import com.example.ecampus.adapters.NoticeAdapter;
 import com.example.ecampus.models.Notice;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,6 +26,7 @@ public class NoticeActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference noticeRef = db.collection("notice");
     private NoticeAdapter adapter;
+    private ShimmerFrameLayout ShimmerViewContainer;
 
 
     @Override
@@ -33,24 +35,22 @@ public class NoticeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notice);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
-        setUpRecyclerView();
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
+        setUpRecyclerView();
+
+        ShimmerViewContainer = findViewById(R.id.shimmer_view_container);
+
+
         cardview = findViewById(R.id.cardview);
 
-        cardview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cardview.setCardBackgroundColor(Color.parseColor("#6C63Ff"));
-                Intent intent = new Intent(NoticeActivity.this, HomescreenActivity.class);
-                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-                startActivity(intent);
-            }
+        cardview.setOnClickListener(v -> {
+            cardview.setCardBackgroundColor(Color.parseColor("#6C63Ff"));
+            Intent intent = new Intent(NoticeActivity.this, HomescreenActivity.class);
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+            startActivity(intent);
         });
-
-
     }
 
 
@@ -67,8 +67,8 @@ public class NoticeActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-    }
 
+    }
 
     @Override
     protected void onStart() {
@@ -85,5 +85,16 @@ public class NoticeActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ShimmerViewContainer.startShimmerAnimation();
+    }
+
+    @Override
+    public void onPause() {
+        ShimmerViewContainer.stopShimmerAnimation();
+        super.onPause();
+    }
 
 }
