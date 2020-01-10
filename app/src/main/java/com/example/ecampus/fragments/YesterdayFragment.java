@@ -44,6 +44,7 @@ public class YesterdayFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_newsfeed, container, false);
+        globalVars = new GlobalVars();
         ButterKnife.bind(this, view);
         return view;
     }
@@ -77,7 +78,7 @@ public class YesterdayFragment extends Fragment {
     }
 
     private void setAdapter() {
-        firestoreRecyclerAdapter = globalVars.NewAdapter(this, "YESTERDAY");
+        firestoreRecyclerAdapter = globalVars.NewAdapter(this, "YESTERDAY", swipeRefreshLayout);
         recyclerView.setAdapter(firestoreRecyclerAdapter);
     }
 

@@ -22,13 +22,10 @@ import com.google.firebase.firestore.Query;
 import java.util.Calendar;
 import java.util.Date;
 
-import butterknife.BindView;
 import es.dmoral.toasty.Toasty;
 
 public class GlobalVars {
 
-    @BindView(R.id.swipeRefresh)
-    SwipeRefreshLayout swipeRefreshLayout;
     private String thisYear = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
     private String thisMonth = DateFormat.format("MM", new Date()).toString();
     private CollectionReference News =
@@ -38,8 +35,7 @@ public class GlobalVars {
     private Query query = News.orderBy("date", Query.Direction.DESCENDING);
 
     @NonNull
-    public FirestoreRecyclerAdapter<News, ViewHolder> NewAdapter(Fragment fragment, String bindFor) {
-
+    public FirestoreRecyclerAdapter<News, ViewHolder> NewAdapter(Fragment fragment, String bindFor, SwipeRefreshLayout swipeRefreshLayout) {
         FirestoreRecyclerOptions<News> options =
                 new FirestoreRecyclerOptions.Builder<News>()
                         .setQuery(query, News.class)
@@ -59,8 +55,9 @@ public class GlobalVars {
                 Long today = new Date().getTime();
                 Long newsDate = model.getDate().getTime(); //doc.getDocument().getDate("date").getTime();
                 Long diff = today - newsDate;
-                Log.i("DIFF", diff.toString());
                 int daysDiff = (int) (diff / (1000 * 60 * 60 * 24));
+                Log.i("DIFF", diff.toString());
+                Log.i("DAYS DIFF", String.valueOf(daysDiff));
 
                 switch (bindFor) {
                     case "LATEST":
@@ -72,19 +69,19 @@ public class GlobalVars {
                     case "YESTERDAY":
                         if (daysDiff == 1) {
                             Log.i("YESTERDAY", "It's was yesterday");
-                            holder.bind(fragment.getActivity(), model);
+                            // holder.bind(fragment.getActivity(), model);
                         }
                         break;
                     case "LAST_WEEK":
                         if (daysDiff > 1 && daysDiff <= 7) {
                             Log.i("Last Week", "This was Last Week");
-                            holder.bind(fragment.getActivity(), model);
+                            // holder.bind(fragment.getActivity(), model);
                         }
                         break;
                     case "OLDER":
                         if (daysDiff > 7) {
                             Log.i("OLDER", "This is too Old");
-                            holder.bind(fragment.getActivity(), model);
+                            // holder.bind(fragment.getActivity(), model);
                         }
                         break;
                 }

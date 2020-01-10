@@ -1,6 +1,7 @@
 package com.example.ecampus.adapters;
 
 import android.content.Context;
+import android.icu.text.SimpleDateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,9 +15,10 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
+import java.util.Date;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import es.dmoral.toasty.Toasty;
 
 public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -43,7 +45,10 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         context = ctx;
         Title.setText(news.getTitle());
         Desc.setText(news.getDesc());
-        NewsDate.setText(news.getDate().toString());
+
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE, MMM dd, yyyy");
+        Date newsDate = news.getDate();
+        NewsDate.setText(sdf.format(newsDate));
         Picasso.get().load(news.getImage()).placeholder(R.drawable.logo).networkPolicy(NetworkPolicy.OFFLINE).into(NewsImage, new Callback() {
             @Override
             public void onSuccess() {
@@ -61,7 +66,6 @@ public class ViewHolder extends RecyclerView.ViewHolder {
                     @Override
                     public void onError(Exception e) {
                         Log.i("PICASO_CACHE", "Couldn't fetch the image drom the network");
-                        Toasty.error(context, "Couldn't fetch the image drom the network").show();
                     }
                 });
 
