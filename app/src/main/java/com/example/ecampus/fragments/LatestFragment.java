@@ -2,6 +2,7 @@ package com.example.ecampus.fragments;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ public class LatestFragment extends Fragment {
 
     private View view;
 
-    GlobalVars globalVars;
+   private GlobalVars globalVars = new GlobalVars();
 
     private FirestoreRecyclerAdapter firestoreRecyclerAdapter;
 
@@ -36,7 +37,6 @@ public class LatestFragment extends Fragment {
 
     @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipeRefreshLayout;
-
 
     public LatestFragment() {
         // Required empty public constructor
@@ -48,7 +48,6 @@ public class LatestFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_newsfeed, container, false);
-        globalVars = new GlobalVars();
         ButterKnife.bind(this, view);
         return view;
     }
@@ -56,8 +55,6 @@ public class LatestFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         setAdapter();
 
@@ -80,8 +77,16 @@ public class LatestFragment extends Fragment {
         firestoreRecyclerAdapter.stopListening();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+         setAdapter();
+    }
+
     private void setAdapter() {
+        Log.i("","Set Adapter is called by Latest Fragment ");
         firestoreRecyclerAdapter = globalVars.NewAdapter(this, "LATEST", swipeRefreshLayout);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(firestoreRecyclerAdapter);
     }
 

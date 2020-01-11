@@ -87,7 +87,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:layout_toStartOf="@+id/fab"
+            android:layout_toStartOf="@+id/sendMsg"
             android:elevation="10dp"
             app:cardCornerRadius="20dp">
 
@@ -137,7 +137,7 @@
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
+            android:id="@+id/sendMsg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

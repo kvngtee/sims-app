@@ -1,16 +1,18 @@
 package com.example.ecampus.models;
 
+import com.google.firebase.Timestamp;
+
 public class Chat {
     private String mName;
     private String mMessage;
     private String mUid;
-    private long messageTime;
+    private Timestamp messageTime;
 
     public Chat() {
 
     }  // Needed for Firebase
 
-    public Chat(String mName, String mMessage, String mUid, long messageTime) {
+    public Chat(String mName, String mMessage, String mUid, Timestamp messageTime) {
         this.mName = mName;
         this.mMessage = mMessage;
         this.mUid = mUid;
@@ -41,11 +43,11 @@ public class Chat {
         this.mUid = mUid;
     }
 
-    public long getMessageTime() {
+    public Timestamp getMessageTime() {
         return messageTime;
     }
 
-    public void setMessageTime(long messageTime) {
+    public void setMessageTime(Timestamp messageTime) {
         this.messageTime = messageTime;
     }
 }

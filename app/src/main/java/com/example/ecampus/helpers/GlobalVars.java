@@ -3,6 +3,7 @@ package com.example.ecampus.helpers;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -52,36 +53,55 @@ public class GlobalVars {
 
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull News model) {
-                Long today = new Date().getTime();
-                Long newsDate = model.getDate().getTime(); //doc.getDocument().getDate("date").getTime();
-                Long diff = today - newsDate;
+                long today = new Date().getTime();
+                long newsDate = model.getDate().getTime(); //doc.getDocument().getDate("date").getTime();
+                long diff = today - newsDate;
                 int daysDiff = (int) (diff / (1000 * 60 * 60 * 24));
-                Log.i("DIFF", diff.toString());
-                Log.i("DAYS DIFF", String.valueOf(daysDiff));
+               holder.bind(fragment.getActivity(), model);
 
                 switch (bindFor) {
                     case "LATEST":
                         if (daysDiff <= 0) {
                             Log.i("TODAY", "It's today");
-                            holder.bind(fragment.getActivity(), model);
+                            Log.i("TODAY", model.getTitle());
+                            Log.i("DIFF",String.valueOf(diff));
+                            Log.i("DAYS DIFF", String.valueOf(daysDiff));
+                            holder.itemView.setVisibility(View.VISIBLE);
+                         }else {
+                            holder.itemView.setVisibility(View.GONE);
                         }
                         break;
                     case "YESTERDAY":
                         if (daysDiff == 1) {
                             Log.i("YESTERDAY", "It's was yesterday");
-                            // holder.bind(fragment.getActivity(), model);
+                            Log.i("YESTERDAY", model.getTitle());
+                            Log.i("DIFF",String.valueOf(diff));
+                            Log.i("DAYS DIFF", String.valueOf(daysDiff));
+                            holder.itemView.setVisibility(View.VISIBLE);
+                          }else {
+                            holder.itemView.setVisibility(View.GONE);
                         }
                         break;
                     case "LAST_WEEK":
-                        if (daysDiff > 1 && daysDiff <= 7) {
+                        if (daysDiff > 1 && daysDiff <= 6) {
                             Log.i("Last Week", "This was Last Week");
-                            // holder.bind(fragment.getActivity(), model);
+                            Log.i("Last Week", model.getTitle());
+                            Log.i("DIFF",String.valueOf(diff));
+                            Log.i("DAYS DIFF", String.valueOf(daysDiff));
+                            holder.itemView.setVisibility(View.VISIBLE);
+                        }else {
+                            holder.itemView.setVisibility(View.GONE);
                         }
                         break;
                     case "OLDER":
-                        if (daysDiff > 7) {
+                        if (daysDiff > 6) {
                             Log.i("OLDER", "This is too Old");
-                            // holder.bind(fragment.getActivity(), model);
+                            Log.i("OLDER", model.getTitle());
+                            Log.i("DIFF",String.valueOf(diff));
+                            Log.i("DAYS DIFF", String.valueOf(daysDiff));
+                            holder.itemView.setVisibility(View.VISIBLE);
+                        }else {
+                            holder.itemView.setVisibility(View.GONE);
                         }
                         break;
                 }

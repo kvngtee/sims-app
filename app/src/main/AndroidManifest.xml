@@ -24,7 +24,9 @@
         <activity android:name=".activities.StaffrecordActivity" />
         <activity android:name=".activities.TimetableActivity" />
         <activity android:name=".activities.NoticeActivity" />
-        <activity android:name=".activities.ForumActivity" />
+        <activity
+            android:name=".activities.ForumActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity android:name=".activities.NewsfeedActivity" />
         <activity android:name=".activities.AdminChatActivity" />
         <activity

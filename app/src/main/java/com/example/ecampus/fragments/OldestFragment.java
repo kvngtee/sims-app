@@ -2,7 +2,7 @@ package com.example.ecampus.fragments;
 
 
 import android.os.Bundle;
-import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,17 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.ecampus.R;
-import com.example.ecampus.adapters.AllNewsAdapter;
-import com.example.ecampus.adapters.ViewHolder;
-import com.example.ecampus.models.News;
+import com.example.ecampus.helpers.GlobalVars;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-
-import java.util.Calendar;
-import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,19 +28,15 @@ public class OldestFragment extends Fragment {
 
     private View view;
 
-    @BindView(R.id.myrecyclerview)
-    RecyclerView recyclerView;
-    @BindView(R.id.swipeRefresh)
-    SwipeRefreshLayout swipeRefreshLayout;
-    private String thisYear = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
-    private String thisMonth = DateFormat.format("MM", new Date()).toString();
-    private CollectionReference News =
-            FirebaseFirestore.getInstance().
-                    collection("news")
-                    .document(thisYear).collection(thisMonth);
-    private Query query = News.orderBy("date", Query.Direction.DESCENDING);
+    GlobalVars globalVars = new GlobalVars();
+
     private FirestoreRecyclerAdapter firestoreRecyclerAdapter;
 
+    @BindView(R.id.myrecyclerview)
+    RecyclerView recyclerView;
+
+    @BindView(R.id.swipeRefresh)
+    SwipeRefreshLayout swipeRefreshLayout;
 
     public OldestFragment() {
         // Required empty public constructor
@@ -67,8 +54,6 @@ public class OldestFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         setAdapter();
 
@@ -92,21 +77,20 @@ public class OldestFragment extends Fragment {
         firestoreRecyclerAdapter.stopListening();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setAdapter();
+    }
+
     private void setAdapter() {
-        firestoreRecyclerAdapter = NewAdapter();
+        Log.i("","Set Adapter is called by Oldest Fragment ");
+        firestoreRecyclerAdapter = globalVars.NewAdapter(this, "OLDER", swipeRefreshLayout);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(firestoreRecyclerAdapter);
     }
 
-    @NonNull
-    private FirestoreRecyclerAdapter<News, ViewHolder> NewAdapter() {
 
-        FirestoreRecyclerOptions<News> options =
-                new FirestoreRecyclerOptions.Builder<News>()
-                        .setQuery(query, News.class)
-                        .setLifecycleOwner(this).build();
-
-        return new AllNewsAdapter(options, getActivity(), swipeRefreshLayout, true);
-    }
 }
 
 
