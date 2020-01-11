@@ -2,21 +2,17 @@ package com.example.ecampus.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.ecampus.R;
 import com.example.ecampus.activities.PostDetailActivity;
 import com.example.ecampus.models.News;
 import com.github.curioustechizen.ago.RelativeTimeTextView;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -64,23 +60,8 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         Title.setText(news.getTitle());
         Desc.setText(news.getDesc());
         NewsDate.setReferenceTime(news.getDate().getTime());
-        Picasso.get().load(news.getImage()).placeholder(R.drawable.logo).networkPolicy(NetworkPolicy.OFFLINE).into(NewsImage, new Callback() {
-            @Override
-            public void onSuccess() {}
+        Picasso.get().load(news.getImage()).into(NewsImage);
 
-            @Override
-            public void onError(Exception e) {
-                Picasso.get().load(news.getImage()).placeholder(R.drawable.logo).error(R.drawable.logo).into(NewsImage, new Callback() {
-                    @Override
-                    public void onSuccess() {}
 
-                    @Override
-                    public void onError(Exception e) {
-                        Log.i("PICASO_CACHE", "Couldn't fetch the image from the network");
-                    }
-                });
-
-            }
-        });
     }
 }

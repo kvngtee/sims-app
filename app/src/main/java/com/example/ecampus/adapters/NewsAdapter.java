@@ -67,7 +67,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
 
         CardView container;
 
-        public MyViewHolder(View view) {
+        MyViewHolder(View view) {
             super(view);
 
             container = itemView.findViewById(R.id.container);

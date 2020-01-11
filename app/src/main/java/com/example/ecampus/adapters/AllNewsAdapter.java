@@ -19,6 +19,7 @@ public class AllNewsAdapter extends FirestoreRecyclerAdapter<News, ViewHolder> {
     private SwipeRefreshLayout swipeRefreshLayout;
     private Boolean showIf;
 
+
     public AllNewsAdapter(FirestoreRecyclerOptions<News> options, Context context, SwipeRefreshLayout swipeRefreshLayout, Boolean showIf) {
         super(options);
         this.context = context;
