@@ -2,41 +2,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginEnd="60dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
 
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/userpic"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/user"/>
+            android:src="@drawable/user" />
 
         <LinearLayout
+            android:id="@+id/lay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="8dp"
-            android:orientation="vertical"
-            android:id="@+id/lay"
-            android:background="@drawable/incoming">
+            android:background="@drawable/incoming"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Prince Asiedu"
                 android:layout_marginStart="13dp"
-                android:layout_marginEnd="5dp"
                 android:layout_marginTop="5dp"
-                android:textSize="16sp"
+                android:layout_marginEnd="5dp"
                 android:fontFamily="@font/proximasemibold"
-                />
+                android:text="Prince Asiedu"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/message_text"
@@ -44,9 +43,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="10dp"
-                android:text="How are you doing?"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/proximasemibold"
+                android:text="How are you doing?"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
@@ -56,17 +55,16 @@
     </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/message_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="20dp"
-            android:fontFamily="@font/proximalight"
-            android:textSize="11sp"
-            android:text="13 May 2017, 1:19 AM" />
-
+    <TextView
+        android:id="@+id/message_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/proximalight"
+        android:text="13 May 2017, 1:19 AM"
+        android:textSize="11sp" />
 
 
 </LinearLayout>

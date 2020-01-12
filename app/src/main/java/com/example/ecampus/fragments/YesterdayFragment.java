@@ -2,6 +2,7 @@ package com.example.ecampus.fragments;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,13 +28,14 @@ public class YesterdayFragment extends Fragment {
 
     private View view;
 
-    GlobalVars globalVars;
+    GlobalVars globalVars = new GlobalVars();
+
+    private FirestoreRecyclerAdapter firestoreRecyclerAdapter;
+
     @BindView(R.id.myrecyclerview)
     RecyclerView recyclerView;
     @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipeRefreshLayout;
-    private FirestoreRecyclerAdapter firestoreRecyclerAdapter;
-
 
     public YesterdayFragment() {
         // Required empty public constructor
@@ -52,8 +54,6 @@ public class YesterdayFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         setAdapter();
 
@@ -77,11 +77,20 @@ public class YesterdayFragment extends Fragment {
         firestoreRecyclerAdapter.stopListening();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setAdapter();
+    }
+
     private void setAdapter() {
+        Log.i("","Set Adapter is called by Yesterday Fragment ");
         firestoreRecyclerAdapter = globalVars.NewAdapter(this, "YESTERDAY", swipeRefreshLayout);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(firestoreRecyclerAdapter);
     }
 
 }
+
 
 

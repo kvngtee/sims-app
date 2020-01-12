@@ -16,35 +16,28 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class AllNewsAdapter extends FirestoreRecyclerAdapter<News, ViewHolder> {
     private Context context;
-    private SwipeRefreshLayout swipeRefreshLayout;
-    private Boolean showIf;
 
 
-    public AllNewsAdapter(FirestoreRecyclerOptions<News> options, Context context, SwipeRefreshLayout swipeRefreshLayout, Boolean showIf) {
+    public AllNewsAdapter(FirestoreRecyclerOptions<News> options, Context context) {
         super(options);
         this.context = context;
-        this.swipeRefreshLayout = swipeRefreshLayout;
-        this.showIf = showIf;
-    }
+         }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.news_row, parent, false));
+                .inflate(R.layout.chat_row, parent, false));
     }
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull News model) {
-        if (showIf) {
             holder.bind(context, model);
-        }
     }
 
     @Override
     public void onDataChanged() {
         super.onDataChanged();
-        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
