@@ -1,17 +1,16 @@
 package com.example.ecampus.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecampus.R;
-import com.example.ecampus.activities.PostDetailActivity;
-import com.example.ecampus.models.News;
+import com.example.ecampus.models.Chat;
 import com.github.curioustechizen.ago.RelativeTimeTextView;
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -21,20 +20,24 @@ public class ChatViewHolder extends RecyclerView.ViewHolder {
 
     Context context;
 
-    @BindView(R.id.news_title)
-    TextView Title;
+    @BindView(R.id.incoming)
+    RelativeLayout incomingChat;
 
-    @BindView(R.id.news_desc)
-    TextView Desc;
+    @BindView(R.id.outgoing)
+    RelativeLayout outgoingChat;
 
-    @BindView(R.id.dateposted)
-    RelativeTimeTextView NewsDate;
 
-    @BindView(R.id.news_image)
-    ImageView NewsImage;
+    @BindView(R.id.userpic)
+    CircularImageView userPic;
 
-    @BindView(R.id.touchView)
-    View touchView;
+    @BindView(R.id.user_name)
+    TextView userName;
+
+    @BindView(R.id.message_text)
+    TextView msgbody;
+
+    @BindView(R.id.message_time)
+    RelativeTimeTextView msgTime;
 
 
     public ChatViewHolder(View itemView) {
@@ -44,24 +47,20 @@ public class ChatViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public void bind(Context ctx, News news) {
+    public void bind(Context ctx, Chat chat, String userID) {
         context = ctx;
+        userName.setText(chat.getmName());
+        msgbody.setText(chat.getmMessage());
+        msgTime.setReferenceTime(chat.getMessageTime().toDate().getTime());
+        Picasso.get().load(chat.getmUserPic()).into(userPic);
 
-        touchView.setOnClickListener(v -> {
-            Intent postdetails = new Intent(context, PostDetailActivity.class);
-
-            postdetails.putExtra("title", news.getTitle());
-            postdetails.putExtra("desc", news.getDesc());
-            postdetails.putExtra("image", news.getImage());
-            postdetails.putExtra("date", news.getDate().getTime());
-            context.startActivity(postdetails);
-
-        });
-
-        Title.setText(news.getTitle());
-        Desc.setText(news.getDesc());
-        NewsDate.setReferenceTime(news.getDate().getTime());
-        Picasso.get().load(news.getImage()).into(NewsImage);
+        if (userID.equalsIgnoreCase(chat.getmUid())) {
+            incomingChat.setVisibility(View.INVISIBLE);
+            outgoingChat.setVisibility(View.VISIBLE);
+        } else {
+            incomingChat.setVisibility(View.VISIBLE);
+            outgoingChat.setVisibility(View.INVISIBLE);
+        }
 
 
     }

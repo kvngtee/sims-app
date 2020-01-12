@@ -6,16 +6,18 @@ public class Chat {
     private String mName;
     private String mMessage;
     private String mUid;
+    private String mUserPic;
     private Timestamp messageTime;
 
     public Chat() {
 
     }  // Needed for Firebase
 
-    public Chat(String mName, String mMessage, String mUid, Timestamp messageTime) {
+    public Chat(String mName, String mMessage, String mUid, String mUserPic, Timestamp messageTime) {
         this.mName = mName;
         this.mMessage = mMessage;
         this.mUid = mUid;
+        this.mUserPic = mUserPic;
         this.messageTime = messageTime;
     }
 
@@ -41,6 +43,14 @@ public class Chat {
 
     public void setmUid(String mUid) {
         this.mUid = mUid;
+    }
+
+    public String getmUserPic() {
+        return mUserPic;
+    }
+
+    public void setmUserPic(String mUserPic) {
+        this.mUserPic = mUserPic;
     }
 
     public Timestamp getMessageTime() {

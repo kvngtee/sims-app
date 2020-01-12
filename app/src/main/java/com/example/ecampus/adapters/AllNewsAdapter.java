@@ -6,33 +6,33 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.ecampus.R;
-import com.example.ecampus.models.News;
+import com.example.ecampus.models.Chat;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
-public class AllNewsAdapter extends FirestoreRecyclerAdapter<News, ViewHolder> {
+public class AllNewsAdapter extends FirestoreRecyclerAdapter<Chat, ChatViewHolder> {
     private Context context;
+    private String currentUserID;
 
-
-    public AllNewsAdapter(FirestoreRecyclerOptions<News> options, Context context) {
+    public AllNewsAdapter(@NonNull FirestoreRecyclerOptions<Chat> options, Context context, String currentUserID) {
         super(options);
         this.context = context;
-         }
+        this.currentUserID = currentUserID;
+    }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext())
+    public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ChatViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.chat_row, parent, false));
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull News model) {
-            holder.bind(context, model);
+    protected void onBindViewHolder(@NonNull ChatViewHolder holder, int position, @NonNull Chat model) {
+        holder.bind(context, model, currentUserID);
     }
 
     @Override
@@ -45,4 +45,5 @@ public class AllNewsAdapter extends FirestoreRecyclerAdapter<News, ViewHolder> {
         super.onError(e);
         Log.e("Friestore RCV", e.getMessage());
     }
+
 }
