@@ -52,19 +52,17 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/messageRec"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/chatview"
         android:layout_below="@+id/forumtb"
-        android:divider="@android:color/transparent"
         android:dividerHeight="16dp"
         android:paddingStart="8dp"
         android:paddingTop="2dp"
-        android:paddingEnd="8dp"
-        android:stackFromBottom="true"
-        android:transcriptMode="alwaysScroll">
+        android:paddingEnd="8dp">
     </androidx.recyclerview.widget.RecyclerView>
 
 

@@ -64,7 +64,8 @@
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/proximalight"
         android:text="13 May 2017, 1:19 AM"
-        android:textSize="11sp" />
+        android:textSize="11sp"
+        android:textColor="@android:color/background_light"/>
 
 
 </LinearLayout>

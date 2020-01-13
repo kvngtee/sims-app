@@ -1,9 +1,7 @@
 package com.example.ecampus.fragments;
 
 
-import android.content.Context;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,18 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.ecampus.R;
-import com.example.ecampus.adapters.AllNewsAdapter;
-import com.example.ecampus.adapters.ViewHolder;
 import com.example.ecampus.helpers.GlobalVars;
-import com.example.ecampus.models.News;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-
-import java.util.Calendar;
-import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

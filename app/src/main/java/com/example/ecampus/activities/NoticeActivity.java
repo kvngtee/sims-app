@@ -58,7 +58,7 @@ public class NoticeActivity extends AppCompatActivity {
         Query query = noticeRef.orderBy("date", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<Notice> options = new FirestoreRecyclerOptions.Builder<Notice>()
-                .setQuery(query, Notice.class)
+                .setQuery(query, Notice.class).setLifecycleOwner(this)
                 .build();
 
         adapter = new NoticeAdapter(options);

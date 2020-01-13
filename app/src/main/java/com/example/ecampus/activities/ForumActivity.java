@@ -10,17 +10,14 @@ import android.util.Log;
 import android.view.WindowManager;
 import android.widget.EditText;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecampus.R;
-import com.example.ecampus.adapters.AllNewsAdapter;
-import com.example.ecampus.adapters.ChatViewHolder;
+import com.example.ecampus.adapters.ChatAdapter;
 import com.example.ecampus.models.Chat;
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.Timestamp;
@@ -40,30 +37,35 @@ public class ForumActivity extends AppCompatActivity {
     @BindView(R.id.sendMsg)
     FloatingActionButton sendMsg;
 
-    @BindView(R.id.messageRec)
-    RecyclerView recyclerView;
-    FirestoreRecyclerAdapter firestoreRecyclerAdapter;
+
+  ChatAdapter chatAdapter;
+
     SharedPreferences sharedPrefs;
+
     private CardView btnBack;
+
     private CollectionReference Forum =
             FirebaseFirestore.getInstance().
-                    collection("Forum");
-    private Query query = Forum.orderBy("date", Query.Direction.DESCENDING);
+                    collection("forum");
 
+    private Query query = Forum.orderBy("messageTime", Query.Direction.ASCENDING);
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_forum);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        ButterKnife.bind(this);
-        sharedPrefs = getSharedPreferences("APP_PREFS", MODE_PRIVATE);
 
-        recyclerView.hasFixedSize();
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        ButterKnife.bind(this);
+
+        sharedPrefs = getSharedPreferences("APP_PREFS", MODE_PRIVATE);
+ recyclerView = findViewById(R.id.messageRec);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         setAdapter();
 
         sendMsg.setEnabled(false);
@@ -125,32 +127,26 @@ public class ForumActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        firestoreRecyclerAdapter.startListening();
+        chatAdapter.startListening();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        firestoreRecyclerAdapter.stopListening();
+        chatAdapter.stopListening();
     }
 
     private void setAdapter() {
-
-        firestoreRecyclerAdapter = NewAdapter();
-        recyclerView.setAdapter(firestoreRecyclerAdapter);
-    }
-
-    @NonNull
-    private FirestoreRecyclerAdapter<Chat, ChatViewHolder> NewAdapter() {
-
         FirestoreRecyclerOptions<Chat> options =
                 new FirestoreRecyclerOptions.Builder<Chat>()
                         .setQuery(query, Chat.class)
                         .setLifecycleOwner(this).build();
+        // String currentUserID = sharedPrefs.getString("userID", "");
 
-        String currentUserID = sharedPrefs.getString("userID", "");
-        return new AllNewsAdapter(options, getApplicationContext(), currentUserID);
+        chatAdapter = new ChatAdapter(options);
+        recyclerView.setAdapter(chatAdapter);
     }
+
 }
 
 
