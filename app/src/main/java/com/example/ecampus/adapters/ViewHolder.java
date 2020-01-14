@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.ecampus.R;
@@ -36,10 +37,11 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     View touchView;
 
 
+   public CardView cardView;
+
     public ViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
-
 
     }
 
@@ -60,8 +62,11 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         Title.setText(news.getTitle());
         Desc.setText(news.getDesc());
         NewsDate.setReferenceTime(news.getDate().getTime());
-        Picasso.get().load(news.getImage()).into(NewsImage);
+        Picasso.get().load(news.getImage()).fit()
+                .centerCrop().into(NewsImage);
 
 
     }
+
+
 }

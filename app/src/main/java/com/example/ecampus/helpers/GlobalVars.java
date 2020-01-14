@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.ecampus.R;
@@ -47,10 +48,11 @@ public class GlobalVars {
             @NonNull
             @Override
             public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return new ViewHolder(LayoutInflater.from(parent.getContext())
+            ViewHolder view =     new ViewHolder(LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.news_row, parent, false));
-            }
+                            return view;   }
 
+                            
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull News model) {
                 long today = new Date().getTime();
@@ -67,9 +69,12 @@ public class GlobalVars {
                             Log.i("DIFF",String.valueOf(diff));
                             Log.i("DAYS DIFF", String.valueOf(daysDiff));
                             holder.itemView.setVisibility(View.VISIBLE);
-                         }else {
-                            holder.itemView.setVisibility(View.GONE);
-                        }
+                            holder.itemView.setLayoutParams( holder.itemView.getLayoutParams()/*
+                                    new Recycler  holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0))View.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                            ViewGroup.LayoutParams.WRAP_CONTENT)*/);
+                        }else {
+                           // holder.itemView.setVisibility(View.GONE);
+                            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));}
                         break;
                     case "YESTERDAY":
                         if (daysDiff == 1) {
@@ -78,9 +83,12 @@ public class GlobalVars {
                             Log.i("DIFF",String.valueOf(diff));
                             Log.i("DAYS DIFF", String.valueOf(daysDiff));
                             holder.itemView.setVisibility(View.VISIBLE);
-                          }else {
-                            holder.itemView.setVisibility(View.GONE);
-                        }
+                            holder.itemView.setLayoutParams(
+                                    new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                            ViewGroup.LayoutParams.WRAP_CONTENT));
+                        }else {
+                           // holder.itemView.setVisibility(View.GONE);
+                            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));}
                         break;
                     case "LAST_WEEK":
                         if (daysDiff > 1 && daysDiff <= 6) {
@@ -89,9 +97,12 @@ public class GlobalVars {
                             Log.i("DIFF",String.valueOf(diff));
                             Log.i("DAYS DIFF", String.valueOf(daysDiff));
                             holder.itemView.setVisibility(View.VISIBLE);
+                            holder.itemView.setLayoutParams(
+                                    new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                            ViewGroup.LayoutParams.WRAP_CONTENT));
                         }else {
                             holder.itemView.setVisibility(View.GONE);
-                        }
+                            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));}
                         break;
                     case "OLDER":
                         if (daysDiff > 6) {
@@ -101,8 +112,8 @@ public class GlobalVars {
                             Log.i("DAYS DIFF", String.valueOf(daysDiff));
                             holder.itemView.setVisibility(View.VISIBLE);
                         }else {
-                            holder.itemView.setVisibility(View.GONE);
-                        }
+                          //  holder.itemView.setVisibility(View.GONE);
+                            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));}
                         break;
                 }
 
