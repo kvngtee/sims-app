@@ -3,6 +3,7 @@ package com.example.ecampus.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -64,9 +65,19 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         NewsDate.setReferenceTime(news.getDate().getTime());
         Picasso.get().load(news.getImage()).fit()
                 .centerCrop().into(NewsImage);
-
-
     }
 
+    public void showItemView(boolean addMargin ){
+        RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                200);
+        itemView.setVisibility(View.VISIBLE);
+       if (addMargin) params.setMargins(12, 10, 12, 10);
+        itemView.setLayoutParams(params);
+    }
+
+    public  void  hideItemView(){
+        itemView.setVisibility(View.GONE);
+        itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
+    }
 
 }

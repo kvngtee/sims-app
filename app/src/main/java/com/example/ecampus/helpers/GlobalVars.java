@@ -48,72 +48,64 @@ public class GlobalVars {
             @NonNull
             @Override
             public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            ViewHolder view =     new ViewHolder(LayoutInflater.from(parent.getContext())
+                ViewHolder view = new ViewHolder(LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.news_row, parent, false));
-                            return view;   }
+                return view;
+            }
 
-                            
+
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull News model) {
                 long today = new Date().getTime();
                 long newsDate = model.getDate().getTime(); //doc.getDocument().getDate("date").getTime();
                 long diff = today - newsDate;
                 int daysDiff = (int) (diff / (1000 * 60 * 60 * 24));
-               holder.bind(fragment.getActivity(), model);
+                holder.bind(fragment.getActivity(), model);
 
                 switch (bindFor) {
                     case "LATEST":
                         if (daysDiff <= 0) {
                             Log.i("TODAY", "It's today");
                             Log.i("TODAY", model.getTitle());
-                            Log.i("DIFF",String.valueOf(diff));
+                            Log.i("DIFF", String.valueOf(diff));
                             Log.i("DAYS DIFF", String.valueOf(daysDiff));
-                            holder.itemView.setVisibility(View.VISIBLE);
-                            holder.itemView.setLayoutParams( holder.itemView.getLayoutParams()/*
-                                    new Recycler  holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0))View.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                            ViewGroup.LayoutParams.WRAP_CONTENT)*/);
-                        }else {
-                           // holder.itemView.setVisibility(View.GONE);
-                            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));}
+                           holder.showItemView(true);
+                        } else {
+                            holder.hideItemView();
+                        }
                         break;
                     case "YESTERDAY":
                         if (daysDiff == 1) {
                             Log.i("YESTERDAY", "It's was yesterday");
                             Log.i("YESTERDAY", model.getTitle());
-                            Log.i("DIFF",String.valueOf(diff));
+                            Log.i("DIFF", String.valueOf(diff));
                             Log.i("DAYS DIFF", String.valueOf(daysDiff));
-                            holder.itemView.setVisibility(View.VISIBLE);
-                            holder.itemView.setLayoutParams(
-                                    new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                            ViewGroup.LayoutParams.WRAP_CONTENT));
-                        }else {
-                           // holder.itemView.setVisibility(View.GONE);
-                            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));}
+                            holder.showItemView(true);
+                        } else {
+                            holder.hideItemView();
+                        }
                         break;
                     case "LAST_WEEK":
                         if (daysDiff > 1 && daysDiff <= 6) {
                             Log.i("Last Week", "This was Last Week");
                             Log.i("Last Week", model.getTitle());
-                            Log.i("DIFF",String.valueOf(diff));
+                            Log.i("DIFF", String.valueOf(diff));
                             Log.i("DAYS DIFF", String.valueOf(daysDiff));
-                            holder.itemView.setVisibility(View.VISIBLE);
-                            holder.itemView.setLayoutParams(
-                                    new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                            ViewGroup.LayoutParams.WRAP_CONTENT));
-                        }else {
-                            holder.itemView.setVisibility(View.GONE);
-                            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));}
+                            holder.showItemView(true);
+                        } else {
+                            holder.hideItemView();
+                        }
                         break;
                     case "OLDER":
                         if (daysDiff > 6) {
                             Log.i("OLDER", "This is too Old");
                             Log.i("OLDER", model.getTitle());
-                            Log.i("DIFF",String.valueOf(diff));
+                            Log.i("DIFF", String.valueOf(diff));
                             Log.i("DAYS DIFF", String.valueOf(daysDiff));
-                            holder.itemView.setVisibility(View.VISIBLE);
-                        }else {
-                          //  holder.itemView.setVisibility(View.GONE);
-                            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));}
+                            holder.showItemView(false);
+                        } else {
+                            holder.hideItemView();
+                        }
                         break;
                 }
 
