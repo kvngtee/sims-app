@@ -4,22 +4,152 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <RelativeLayout
-        android:id="@+id/incoming"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:orientation="vertical"
         android:layout_alignParentStart="true">
 
-        <include layout="@layout/incoming_message" />
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <RelativeLayout
-        android:id="@+id/outgoing"
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/in_userPic"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/user" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/incoming"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/in_userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/proximasemibold"
+                    android:text="Prince Asiedu"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/in_message_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/proximasemibold"
+                    android:text="How are you doing?"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <com.github.curioustechizen.ago.RelativeTimeTextView
+            android:id="@+id/in_message_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="40dp"
+            android:fontFamily="@font/proximalight"
+            android:text="13 May 2017, 1:19 AM"
+            android:textSize="11sp"
+            android:textColor="@android:color/background_light"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginStart="60dp"
+        android:orientation="vertical"
         android:layout_alignParentEnd="true">
 
-        <include layout="@layout/outgoing_message" />
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/outgoing"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/out_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="13dp"
+                    android:fontFamily="@font/proximasemibold"
+                    android:text="Prince Asiedu"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/out_message_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/proximasemibold"
+                    android:text="How are you doing?"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/out_userpic"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/user" />
+
+
+        </LinearLayout>
+
+        <com.github.curioustechizen.ago.RelativeTimeTextView
+            android:id="@+id/out_message_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/proximalight"
+            android:text="13 May 2017, 1:19 AM"
+            android:textSize="11sp" />
+
+
+    </LinearLayout>
+
 
 </RelativeLayout>

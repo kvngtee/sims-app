@@ -15,25 +15,22 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
 public class ChatAdapter extends FirestoreRecyclerAdapter<Chat, ChatViewHolder> {
-    public ChatAdapter(@NonNull FirestoreRecyclerOptions<Chat> options) {
+    private String currentUserID;
+    public ChatAdapter(@NonNull FirestoreRecyclerOptions<Chat> options, String currentUserID) {
         super(options);
+        this.currentUserID = currentUserID;
     }
 
     @Override
     protected void onBindViewHolder(@NonNull ChatViewHolder holder, int position, @NonNull Chat chat) {
         Log.i("CHAT", chat.getmMessage());
-        holder.msgText.setText(chat.getmMessage());
-        holder.msgTime.setReferenceTime(chat.getMessageTime().toDate().getTime());
-        holder.userName.setText(chat.getmName());
-       Picasso.get().load(chat.getmUserPic()).into(holder.userPic);
-        holder.msgText.setText(chat.getmMessage());
-
+ holder.bind(chat, currentUserID);
     }
 
     @NonNull
     @Override
     public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.incoming_message,
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_row,
                 parent, false);
     return  new ChatViewHolder(v);
     }

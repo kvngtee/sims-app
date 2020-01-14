@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 
@@ -67,6 +68,18 @@ public class ForumActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         setAdapter();
+
+        recyclerView.addOnLayoutChangeListener((view, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
+            if (bottom < oldBottom) {
+                recyclerView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        recyclerView.smoothScrollToPosition(0);
+                    }
+                }, 100);
+            }
+        });
+
 
         sendMsg.setEnabled(false);
         btnBack = findViewById(R.id.cardview);
@@ -141,9 +154,9 @@ public class ForumActivity extends AppCompatActivity {
                 new FirestoreRecyclerOptions.Builder<Chat>()
                         .setQuery(query, Chat.class)
                         .setLifecycleOwner(this).build();
-        // String currentUserID = sharedPrefs.getString("userID", "");
 
-        chatAdapter = new ChatAdapter(options);
+         String currentUserID = sharedPrefs.getString("userID", "");
+        chatAdapter = new ChatAdapter(options, currentUserID);
         recyclerView.setAdapter(chatAdapter);
     }
 
