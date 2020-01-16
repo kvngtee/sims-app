@@ -65,135 +65,174 @@
         android:text="This section contains official timetables from the school administration."
         android:textColor="#ACACAC"
         android:textSize="12sp" />
-
     <androidx.cardview.widget.CardView
-        android:id="@+id/lecturesttb"
+        android:id="@+id/searchcv"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="40dp"
-        app:cardBackgroundColor="#1F1B24"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="20dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/proximasemibold"
-                    android:text="Lecture Timetables"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/info1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:fontFamily="@font/proximalight"
-                    android:text="This contains the official lecture \ntimetables for all departments."
-                    android:textColor="#ACACAC"
-                    android:textSize="14sp" />
-
-
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:src="@drawable/lecturesttb" />
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/examsttb"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
-        app:cardBackgroundColor="#1F1B24"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="20dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/proximasemibold"
-                    android:text="Exam Timetables"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/info2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:fontFamily="@font/proximalight"
-                    android:text="This contains the official exam \ntimetables for all departments."
-                    android:textColor="#ACACAC"
-                    android:textSize="14sp" />
-
-
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:src="@drawable/exmasttb" />
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/contact_admin"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|bottom"
-        android:fontFamily="@font/proximalight"
-        android:textAlignment="center"
-        android:layout_marginTop="30dp"
-        android:text="Contact admin to resolve any issue \nregarding the timetables."
-        android:textColor="#8A8A8A"
-        android:textSize="12sp" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        app:cardBackgroundColor="#E2E2E2"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="3dp">
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:iconifiedByDefault="false"
+            android:queryBackground="@android:color/transparent"
+            android:queryHint="Search for news" />
+
+        <!-- <EditText
+             android:id="@+id/searchFor"
+             android:layout_width="match_parent"
+             android:layout_height="37dp"
+             android:hint="Search for news"
+             android:paddingStart="20dp"
+           android:paddingEnd="15dp"
+             android:drawablePadding="12dp"
+             android:drawableStart="@drawable/ic_search"
+             android:background="@android:color/transparent"/>-->
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/newsRCV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--
+        <androidx.cardview.widget.CardView
+            android:id="@+id/lecturesttb"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="40dp"
+            app:cardBackgroundColor="#1F1B24"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/proximasemibold"
+                        android:text="Lecture Timetables"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/info1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="@font/proximalight"
+                        android:text="This contains the official lecture \ntimetables for all departments."
+                        android:textColor="#ACACAC"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/lecturesttb" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/examsttb"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="#1F1B24"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/proximasemibold"
+                        android:text="Exam Timetables"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/info2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="@font/proximalight"
+                        android:text="This contains the official exam \ntimetables for all departments."
+                        android:textColor="#ACACAC"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/exmasttb" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/contact_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:fontFamily="@font/proximalight"
+            android:textAlignment="center"
+            android:layout_marginTop="30dp"
+            android:text="Contact admin to resolve any issue \nregarding the timetables."
+            android:textColor="#8A8A8A"
+            android:textSize="12sp" />
+    -->
 
 
 

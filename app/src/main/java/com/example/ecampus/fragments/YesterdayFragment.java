@@ -17,7 +17,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.ecampus.R;
 import com.example.ecampus.activities.NewsfeedActivity;
 import com.example.ecampus.adapters.news_fragment.NewsFragAdapter;
-import com.example.ecampus.helpers.GlobalVars;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 
 import butterknife.BindView;
