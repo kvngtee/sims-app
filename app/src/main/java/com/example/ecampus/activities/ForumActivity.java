@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 
@@ -17,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecampus.R;
-import com.example.ecampus.adapters.ChatAdapter;
 import com.example.ecampus.models.Chat;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -39,7 +37,7 @@ public class ForumActivity extends AppCompatActivity {
     FloatingActionButton sendMsg;
 
 
-  ChatAdapter chatAdapter;
+    ChatAdapter chatAdapter;
 
     SharedPreferences sharedPrefs;
 
@@ -51,6 +49,7 @@ public class ForumActivity extends AppCompatActivity {
 
     private Query query = Forum.orderBy("messageTime", Query.Direction.ASCENDING);
     RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +63,7 @@ public class ForumActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         sharedPrefs = getSharedPreferences("APP_PREFS", MODE_PRIVATE);
- recyclerView = findViewById(R.id.messageRec);
+        recyclerView = findViewById(R.id.messageRec);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         setAdapter();
@@ -155,7 +154,7 @@ public class ForumActivity extends AppCompatActivity {
                         .setQuery(query, Chat.class)
                         .setLifecycleOwner(this).build();
 
-         String currentUserID = sharedPrefs.getString("userID", "");
+        String currentUserID = sharedPrefs.getString("userID", "");
         chatAdapter = new ChatAdapter(options, currentUserID);
         recyclerView.setAdapter(chatAdapter);
     }

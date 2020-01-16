@@ -3,7 +3,6 @@ package com.example.ecampus.activities;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecampus.R;
-import com.example.ecampus.adapters.NoticeAdapter;
+import com.example.ecampus.adapters.notice.NoticeAdapter;
 import com.example.ecampus.models.Notice;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;

@@ -1,4 +1,4 @@
-package com.example.ecampus.adapters;
+package com.example.ecampus.adapters.notice;
 
 import android.content.Context;
 import android.view.LayoutInflater;

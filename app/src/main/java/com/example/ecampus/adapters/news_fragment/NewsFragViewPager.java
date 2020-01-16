@@ -1,4 +1,4 @@
-package com.example.ecampus.adapters;
+package com.example.ecampus.adapters.news_fragment;
 
 import android.content.Context;
 
@@ -14,8 +14,8 @@ import com.example.ecampus.fragments.LatestFragment;
 import com.example.ecampus.fragments.OldestFragment;
 import com.example.ecampus.fragments.YesterdayFragment;
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
-    public ViewPagerAdapter(Context context, @NonNull FragmentManager fm) {
+public class NewsFragViewPager extends FragmentPagerAdapter {
+    public NewsFragViewPager(Context context, @NonNull FragmentManager fm) {
         super(fm);
     }
 

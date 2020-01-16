@@ -1,4 +1,4 @@
-package com.example.ecampus.adapters;
+package com.example.ecampus.adapters.chat;
 
 import android.view.View;
 import android.widget.LinearLayout;

@@ -1,4 +1,4 @@
-package com.example.ecampus.adapters;
+package com.example.ecampus.adapters.news_fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,18 +7,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.cardview.widget.CardView;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.ddiehl.timesincetextview.TimeSinceTextView;
 import com.example.ecampus.R;
 import com.example.ecampus.activities.PostDetailActivity;
 import com.example.ecampus.models.News;
-import com.github.curioustechizen.ago.RelativeTimeTextView;
 import com.squareup.picasso.Picasso;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ViewHolder extends RecyclerView.ViewHolder {
+public class NewsFragViewHolder extends RecyclerView.ViewHolder {
 
     Context context;
 
@@ -29,7 +29,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     TextView Desc;
 
     @BindView(R.id.dateposted)
-    RelativeTimeTextView NewsDate;
+    TimeSinceTextView NewsDate;
 
     @BindView(R.id.news_image)
     ImageView NewsImage;
@@ -38,9 +38,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     View touchView;
 
 
-   public CardView cardView;
-
-    public ViewHolder(View itemView) {
+    public NewsFragViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
 
@@ -62,20 +60,20 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
         Title.setText(news.getTitle());
         Desc.setText(news.getDesc());
-        NewsDate.setReferenceTime(news.getDate().getTime());
+        NewsDate.setDate(news.getDate());
         Picasso.get().load(news.getImage()).fit()
                 .centerCrop().into(NewsImage);
     }
 
-    public void showItemView( ){
+    public void showItemView() {
         RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 200);
         itemView.setVisibility(View.VISIBLE);
-      params.setMargins(12, 10, 12, 10);
+        params.setMargins(12, 10, 12, 10);
         itemView.setLayoutParams(params);
     }
 
-    public  void  hideItemView(){
+    public void hideItemView() {
         itemView.setVisibility(View.GONE);
         itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
     }

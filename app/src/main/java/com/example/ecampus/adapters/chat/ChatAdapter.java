@@ -1,4 +1,4 @@
-package com.example.ecampus.adapters;
+package com.example.ecampus.adapters.chat;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -6,13 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecampus.R;
 import com.example.ecampus.models.Chat;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.squareup.picasso.Picasso;
 
 public class ChatAdapter extends FirestoreRecyclerAdapter<Chat, ChatViewHolder> {
     private String currentUserID;

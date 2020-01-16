@@ -11,7 +11,7 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.ecampus.R;
-import com.example.ecampus.adapters.ViewPagerAdapter;
+import com.example.ecampus.adapters.news_fragment.NewsFragViewPager;
 import com.example.ecampus.models.News;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.tabs.TabLayout;
@@ -47,7 +47,7 @@ public class NewsfeedActivity extends AppCompatActivity {
         profile = findViewById(R.id.userpic);
         tabLayout = findViewById(R.id.tablayout);
         viewPager = findViewById(R.id.myViewPager);
-        viewPager.setAdapter(new ViewPagerAdapter(getApplicationContext(), getSupportFragmentManager()));
+        viewPager.setAdapter(new NewsFragViewPager(getApplicationContext(), getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
 
         Picasso.get().load(sharedPrefs.getString("image", "")).placeholder(R.drawable.user).into(profile);
