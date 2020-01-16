@@ -65,44 +65,28 @@ public class GlobalVars {
                 switch (bindFor) {
                     case "LATEST":
                         if (daysDiff <= 0) {
-                            Log.i("TODAY", "It's today");
-                            Log.i("TODAY", model.getTitle());
-                            Log.i("DIFF", String.valueOf(diff));
-                            Log.i("DAYS DIFF", String.valueOf(daysDiff));
-                           holder.showItemView(true);
+                              holder.showItemView();
                         } else {
                             holder.hideItemView();
                         }
                         break;
                     case "YESTERDAY":
                         if (daysDiff == 1) {
-                            Log.i("YESTERDAY", "It's was yesterday");
-                            Log.i("YESTERDAY", model.getTitle());
-                            Log.i("DIFF", String.valueOf(diff));
-                            Log.i("DAYS DIFF", String.valueOf(daysDiff));
-                            holder.showItemView(true);
+                                 holder.showItemView();
                         } else {
                             holder.hideItemView();
                         }
                         break;
                     case "LAST_WEEK":
                         if (daysDiff > 1 && daysDiff <= 6) {
-                            Log.i("Last Week", "This was Last Week");
-                            Log.i("Last Week", model.getTitle());
-                            Log.i("DIFF", String.valueOf(diff));
-                            Log.i("DAYS DIFF", String.valueOf(daysDiff));
-                            holder.showItemView(true);
+                               holder.showItemView();
                         } else {
                             holder.hideItemView();
                         }
                         break;
                     case "OLDER":
                         if (daysDiff > 6) {
-                            Log.i("OLDER", "This is too Old");
-                            Log.i("OLDER", model.getTitle());
-                            Log.i("DIFF", String.valueOf(diff));
-                            Log.i("DAYS DIFF", String.valueOf(daysDiff));
-                            holder.showItemView(false);
+                               holder.showItemView();
                         } else {
                             holder.hideItemView();
                         }

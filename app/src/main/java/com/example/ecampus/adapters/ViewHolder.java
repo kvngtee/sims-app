@@ -67,11 +67,11 @@ public class ViewHolder extends RecyclerView.ViewHolder {
                 .centerCrop().into(NewsImage);
     }
 
-    public void showItemView(boolean addMargin ){
+    public void showItemView( ){
         RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 200);
         itemView.setVisibility(View.VISIBLE);
-       if (addMargin) params.setMargins(12, 10, 12, 10);
+      params.setMargins(12, 10, 12, 10);
         itemView.setLayoutParams(params);
     }
 
