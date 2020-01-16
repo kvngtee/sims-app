@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.ecampus.R;
+import com.example.ecampus.activities.NewsfeedActivity;
+import com.example.ecampus.adapters.news_fragment.NewsFragAdapter;
 import com.example.ecampus.helpers.GlobalVars;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 
@@ -28,12 +30,13 @@ public class YesterdayFragment extends Fragment {
 
     private View view;
 
-    GlobalVars globalVars = new GlobalVars();
+    private NewsfeedActivity newsfeedActivity = new NewsfeedActivity();
 
     private FirestoreRecyclerAdapter firestoreRecyclerAdapter;
 
     @BindView(R.id.myrecyclerview)
     RecyclerView recyclerView;
+
     @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipeRefreshLayout;
 
@@ -46,7 +49,6 @@ public class YesterdayFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_newsfeed, container, false);
-        globalVars = new GlobalVars();
         ButterKnife.bind(this, view);
         return view;
     }
@@ -84,8 +86,10 @@ public class YesterdayFragment extends Fragment {
     }
 
     private void setAdapter() {
-        Log.i("","Set Adapter is called by Yesterday Fragment ");
-        firestoreRecyclerAdapter = globalVars.NewAdapter(this, "YESTERDAY", swipeRefreshLayout);
+        Log.i("", "Set Adapter is called by Yesterday Fragment ");
+        firestoreRecyclerAdapter =
+                new NewsFragAdapter(newsfeedActivity.getNewsOptions(this),
+                        "YESTERDAY", swipeRefreshLayout);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(firestoreRecyclerAdapter);
     }

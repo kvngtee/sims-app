@@ -144,7 +144,7 @@
                             android:clickable="true"
                             android:src="@drawable/clock" />
 
-                        <com.github.curioustechizen.ago.RelativeTimeTextView
+                        <com.ddiehl.timesincetextview.TimeSinceTextView
                             android:id="@+id/dateposted"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -154,6 +154,16 @@
                             android:textColor="#8A8A8A"
                             android:textSize="11sp" />
 
+                        <!--<com.github.curioustechizen.ago.RelativeTimeTextView
+                            android:id="@+id/dateposted"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="false"
+                            android:text="Oct 25, 19"
+                            android:textColor="#8A8A8A"
+                            android:textSize="11sp" />
+-->
                     </LinearLayout>
 
 

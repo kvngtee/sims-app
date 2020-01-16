@@ -15,7 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.ecampus.R;
-import com.example.ecampus.helpers.GlobalVars;
+import com.example.ecampus.activities.NewsfeedActivity;
+import com.example.ecampus.adapters.news_fragment.NewsFragAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 
 import butterknife.BindView;
@@ -28,12 +29,13 @@ public class LastWeekFragment extends Fragment {
 
     private View view;
 
-    GlobalVars globalVars = new GlobalVars();
+    private NewsfeedActivity newsfeedActivity = new NewsfeedActivity();
 
     private FirestoreRecyclerAdapter firestoreRecyclerAdapter;
 
     @BindView(R.id.myrecyclerview)
     RecyclerView recyclerView;
+
     @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipeRefreshLayout;
 
@@ -84,8 +86,9 @@ public class LastWeekFragment extends Fragment {
 
     private void setAdapter() {
         Log.i("","Set Adapter is called by Last Week Fragment ");
-        firestoreRecyclerAdapter = globalVars.NewAdapter(this, "LAST_WEEK", swipeRefreshLayout);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        firestoreRecyclerAdapter =
+                new NewsFragAdapter(newsfeedActivity.getNewsOptions(this),
+                        "LAST_WEEK", swipeRefreshLayout);        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(firestoreRecyclerAdapter);
     }
 
