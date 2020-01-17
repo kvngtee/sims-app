@@ -55,8 +55,8 @@ public class HomescreenActivity extends AppCompatActivity {
         userName.setText(sharedPrefs.getString("firstName", "No name"));
         todayDate.setText(sdf.format(new Date()));
 
-//        Picasso.get().load(sharedPrefs.getString("image", ""))
-//                .placeholder(R.drawable.user).fit().centerCrop().into(profile);
+       Picasso.get().load(sharedPrefs.getString("image", ""))
+                .placeholder(R.drawable.user).fit().centerCrop().into(profile);
         profile.setOnClickListener(v -> {
 
             Intent intent = new Intent(HomescreenActivity.this, ProfileActivity.class);
