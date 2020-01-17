@@ -31,7 +31,7 @@ public class HomescreenActivity extends AppCompatActivity {
     GridLayout mainGrid;
     Toolbar toolbar;
     CircularImageView profile;
-private TextView    userName, todayDate;
+    private TextView userName, todayDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,15 +55,13 @@ private TextView    userName, todayDate;
         userName.setText(sharedPrefs.getString("firstName", "No name"));
         todayDate.setText(sdf.format(new Date()));
 
-        Picasso.get().load(sharedPrefs.getString("image", "")).placeholder(R.drawable.user).into(profile);
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+       Picasso.get().load(sharedPrefs.getString("image", ""))
+                .placeholder(R.drawable.user).fit().centerCrop().into(profile);
+        profile.setOnClickListener(v -> {
 
-                Intent intent = new Intent(HomescreenActivity.this, ProfileActivity.class);
-                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(HomescreenActivity.this, ProfileActivity.class);
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+            startActivity(intent);
         });
 
         //Set Event

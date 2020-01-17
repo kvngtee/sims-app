@@ -67,7 +67,7 @@ public class NewsFragViewHolder extends RecyclerView.ViewHolder {
 
     public void showItemView() {
         RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                200);
+                ViewGroup.LayoutParams.WRAP_CONTENT);
         itemView.setVisibility(View.VISIBLE);
         params.setMargins(12, 10, 12, 10);
         itemView.setLayoutParams(params);

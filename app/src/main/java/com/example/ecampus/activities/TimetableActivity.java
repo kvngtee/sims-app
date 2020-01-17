@@ -83,7 +83,7 @@ public class TimetableActivity extends AppCompatActivity {
                         FirebaseFirestore.getInstance().
                                 collection("news")
                                 .document(thisYear).collection(thisMonth);
-                Query query = News.orderBy("title").startAt(s.trim()).endAt(s.trim() + "\uf8ff");
+                Query query = News.orderBy("title").startAt(s.trim() ).endAt(s.trim() + "\uf8ff");
                 FirestoreRecyclerOptions options = new FirestoreRecyclerOptions.Builder<News>()
                         .setQuery(query, News.class).build();
                 newsSearchAdapter.updateOptions(options);
