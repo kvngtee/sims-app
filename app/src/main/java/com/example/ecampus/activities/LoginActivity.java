@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public void  onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if (StudentID.length() == 17) {
                     //check if user id is in fire store and display data
@@ -97,47 +97,44 @@ public class LoginActivity extends AppCompatActivity {
                     db.collection("students")
                             .whereEqualTo("studentID", StudentID.getText().toString())
                             .get(source)
-                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                @SuppressLint("SetTextI18n")
-                                @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                    if (task.isSuccessful()) {
-                                        QuerySnapshot snapshot = task.getResult();
-                                        if (snapshot.getDocuments().size() == 1) {
+                            .addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    QuerySnapshot snapshot = task.getResult();
+                                    if (snapshot.getDocuments().size() == 1) {
 
-                                            Fname.setVisibility(View.VISIBLE);
+                                        Fname.setVisibility(View.VISIBLE);
 
-                                            welcome.setText("Welcome back,");
-                                            info.setText("Please enter your password \nto continue.");
-                                            Fname.setText(snapshot.getDocuments().get(0).get("firstName").toString() + ".");
-                                            Picasso.get().load(snapshot.getDocuments().get(0).getString("image")).placeholder(R.drawable.user).into(userpic);
+                                        welcome.setText("Welcome back,");
+                                        info.setText("Please enter your password \nto continue.");
+                                        Fname.setText(snapshot.getDocuments().get(0).get("firstName").toString() + ".");
+                                        Picasso.get().load(snapshot.getDocuments().get(0).getString("image"))
+                                                .placeholder(R.drawable.user).fit().centerCrop().into(userpic);
 
-                                            Map<String, Object> data = snapshot.getDocuments().get(0).getData();
-                                            editor.putString("firstName", data.get("firstName").toString());
-                                            editor.putString("lastName", data.get("lastName").toString());
-                                            editor.putString("born", data.get("born").toString());
-                                            editor.putString("department", data.get("department").toString());
-                                            editor.putString("email", data.get("email").toString());
-                                            editor.putString("image", data.get("image").toString());
-                                            editor.putString("level", data.get("level").toString());
-                                            editor.putString("nationality", data.get("nationality").toString());
-                                            editor.putString("phone", data.get("phone").toString());
-                                            editor.putString("studentID", data.get("studentID").toString());
-                                            editor.putString("password", data.get("password").toString());
-                                            editor.putString("userID", snapshot.getDocuments().get(0).getId());
-                                            editor.apply();
+                                        Map<String, Object> data = snapshot.getDocuments().get(0).getData();
+                                        editor.putString("firstName", data.get("firstName").toString());
+                                        editor.putString("lastName", data.get("lastName").toString());
+                                        editor.putString("born", data.get("born").toString());
+                                        editor.putString("department", data.get("department").toString());
+                                        editor.putString("email", data.get("email").toString());
+                                        editor.putString("image", data.get("image").toString());
+                                        editor.putString("level", data.get("level").toString());
+                                        editor.putString("nationality", data.get("nationality").toString());
+                                        editor.putString("phone", data.get("phone").toString());
+                                        editor.putString("studentID", data.get("studentID").toString());
+                                        editor.putString("password", data.get("password").toString());
+                                        editor.putString("userID", snapshot.getDocuments().get(0).getId());
+                                        editor.apply();
 
-                                        } else {
-                                            Fname.setVisibility(View.GONE);
-                                            info.setText("Please enter your student ID \nand password to continue.");
-                                            userpic.setImageResource(R.drawable.user);
-                                            Log.d("GET_DATA", "No such document");
-                                            Toasty.error(getApplicationContext(), "Invalid Student ID...please try again").show();
-                                        }
                                     } else {
-                                        Toasty.error(getApplicationContext(), "Couldn't connect to the internet").show();
-                                        Log.d("GET_DATA", "get failed with ", task.getException());
+                                        Fname.setVisibility(View.GONE);
+                                        info.setText("Please enter your student ID \nand password to continue.");
+                                        userpic.setImageResource(R.drawable.user);
+                                        Log.d("GET_DATA", "No such document");
+                                        Toasty.error(getApplicationContext(), "Invalid Student ID...please try again").show();
                                     }
+                                } else {
+                                    Toasty.error(getApplicationContext(), "Couldn't connect to the internet").show();
+                                    Log.d("GET_DATA", "get failed with ", task.getException());
                                 }
                             });
 
