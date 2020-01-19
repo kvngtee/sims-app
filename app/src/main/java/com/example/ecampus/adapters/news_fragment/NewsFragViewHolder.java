@@ -2,6 +2,8 @@ package com.example.ecampus.adapters.news_fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -67,7 +69,7 @@ public class NewsFragViewHolder extends RecyclerView.ViewHolder {
 
     public void showItemView() {
         RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
+                dpToPx(100));
         itemView.setVisibility(View.VISIBLE);
         params.setMargins(12, 10, 12, 10);
         itemView.setLayoutParams(params);
@@ -78,4 +80,18 @@ public class NewsFragViewHolder extends RecyclerView.ViewHolder {
         itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
     }
 
+     public int dpToPx(int dp) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        int px = Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+        Log.i("DP TO PX", String.format("Calculated DP: %d Converted Pixel: %s", dp, px));
+        return px;
+    }
+
+    //Not in use because setHeight is in PX not DP
+    public int pxToDp(int px) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        int dp = Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+        Log.i("DP TO PX", String.format("Calculated Pixel: %d Converted DP: %s", px, dp));
+        return dp;
+    }
 }
