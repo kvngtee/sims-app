@@ -27,7 +27,6 @@ import com.google.firebase.firestore.Query;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import es.dmoral.toasty.Toasty;
 
 public class ForumActivity extends AppCompatActivity {
 
@@ -71,13 +70,8 @@ public class ForumActivity extends AppCompatActivity {
 
         recyclerView.addOnLayoutChangeListener((view, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
             if (bottom < oldBottom) {
-                recyclerView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        recyclerView.smoothScrollToPosition(0);
-                    }
-                }, 100);
-            }
+               // recyclerView.postDelayed(() -> recyclerView.smoothScrollToPosition(0), 100);
+                recyclerView.scrollToPosition(chatAdapter.getItemCount() );}
         });
 
 
@@ -117,22 +111,23 @@ public class ForumActivity extends AppCompatActivity {
 
 
         sendMsg.setOnClickListener(v -> {
-            String firstName = sharedPrefs.getString("firstName", "");
-            String lastName = sharedPrefs.getString("lastName", "");
-            String fullName = firstName + " " + lastName;
-            String userID = sharedPrefs.getString("userID", "");
-            String userPic = sharedPrefs.getString("image", "");
-            Timestamp msgTime = Timestamp.now();
-            Chat chat = new Chat(fullName, inputMsg.getText().toString().trim(), userID, userPic, msgTime);
+            if (inputMsg.getText().toString().trim().length() > 0) {
+                String firstName = sharedPrefs.getString("firstName", "");
+                String lastName = sharedPrefs.getString("lastName", "");
+                String fullName = firstName + " " + lastName;
+                String userID = sharedPrefs.getString("userID", "");
+                String userPic = sharedPrefs.getString("image", "");
+                Timestamp msgTime = Timestamp.now();
+                Chat chat = new Chat(fullName, inputMsg.getText().toString().trim(), userID, userPic, msgTime);
 
-
-            Forum.add(chat).addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    Toasty.success(getApplicationContext(), "Msg Sent").show();
-                } else {
-                    Log.i("ERROR", task.getException().getMessage());
-                }
-            });
+                Forum.add(chat).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        inputMsg.setText("");
+                    } else {
+                        Log.i("ERROR", task.getException().getMessage());
+                    }
+                });
+            }
         });
 
     }

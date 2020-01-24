@@ -1,5 +1,5 @@
 
-package com.example.ecampus.adapters.news_fragment;
+package com.example.ecampus.adapters.news;
 
 import android.content.Context;
 import android.util.Log;

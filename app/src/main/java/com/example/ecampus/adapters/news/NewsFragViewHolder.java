@@ -1,4 +1,4 @@
-package com.example.ecampus.adapters.news_fragment;
+package com.example.ecampus.adapters.news;
 
 import android.content.Context;
 import android.content.Intent;
@@ -69,7 +69,7 @@ public class NewsFragViewHolder extends RecyclerView.ViewHolder {
 
     public void showItemView() {
         RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                dpToPx(100));
+                ViewGroup.LayoutParams.WRAP_CONTENT);
         itemView.setVisibility(View.VISIBLE);
         params.setMargins(12, 10, 12, 10);
         itemView.setLayoutParams(params);
@@ -83,7 +83,7 @@ public class NewsFragViewHolder extends RecyclerView.ViewHolder {
      public int dpToPx(int dp) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         int px = Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-        Log.i("DP TO PX", String.format("Calculated DP: %d Converted Pixel: %s", dp, px));
+        Log.i("DP TO PX", String.format(" DP: %d, PX: %d, MH: %d, GH: %d", dp, px, itemView.getMeasuredHeight(), itemView.getHeight()));
         return px;
     }
 

@@ -81,5 +81,10 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 
+    // Full text search
+   // implementation 'com.algolia:algoliasearch-android:3.+'
+    def work_version = "2.3.0"
+    implementation "androidx.work:work-runtime:$work_version"
+
 }
 apply plugin: 'com.google.gms.google-services'

@@ -42,8 +42,8 @@ class ChatViewHolder extends RecyclerView.ViewHolder {
         outMsgTime.setReferenceTime(chat.getMessageTime().toDate().getTime());
         inUserName.setText(chat.getmName());
         outUserName.setText(chat.getmName());
-        Picasso.get().load(chat.getmUserPic()).into(inUserPic);
-        Picasso.get().load(chat.getmUserPic()).into(outUserPic);
+        Picasso.get().load(chat.getmUserPic()).fit().centerCrop().into(inUserPic);
+        Picasso.get().load(chat.getmUserPic()).fit().centerCrop().into(outUserPic);
 
         if (currentUserID.equalsIgnoreCase(chat.getmUid())) {
             incomingChat.setVisibility(View.GONE);
