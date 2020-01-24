@@ -66,56 +66,78 @@
         </androidx.cardview.widget.CardView>
 
 
-    <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tablayout"
-        app:tabMode="auto"
-        app:tabTextAppearance="@style/tab_text"
-        app:tabSelectedTextColor="@android:color/white"
-        android:textAlignment="center"
-        android:elevation="8dp"
-        android:layout_marginStart="-10dp"
-        android:layout_marginEnd="-10dp"
-        app:tabIndicatorColor="@color/colorPrimary"
-        app:tabIndicatorGravity="bottom"
-        app:tabIndicatorHeight="2dp"
-        app:tabIndicatorFullWidth="false"
-        app:tabBackground="@android:color/transparent"
-        android:layout_below="@id/searchcv">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Latest"/>
-
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Yesterday"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Last week"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Oldest"/>
-
-    </com.google.android.material.tabs.TabLayout>
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/myViewPager"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tablayout"
-/>
+        android:layout_below="@id/searchcv">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/newsRCV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/tabsPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.tabs.TabLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tablayout"
+                app:tabMode="auto"
+                app:tabTextAppearance="@style/tab_text"
+                app:tabSelectedTextColor="@android:color/white"
+                android:textAlignment="center"
+                android:elevation="8dp"
+                android:layout_marginStart="-10dp"
+                android:layout_marginEnd="-10dp"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabIndicatorGravity="bottom"
+                app:tabIndicatorHeight="2dp"
+                app:tabIndicatorFullWidth="false"
+                app:tabBackground="@android:color/transparent"
+                android:layout_below="@id/searchcv">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="Latest"/>
+
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="Yesterday"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="Last week"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="Oldest"/>
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/myViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tablayout"
+                />
+        </LinearLayout>
+
+
+    </FrameLayout>
+
 
 </RelativeLayout>

@@ -1,7 +1,9 @@
-package com.example.ecampus.adapters.news_fragment;
+package com.example.ecampus.adapters.news;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -78,4 +80,18 @@ public class NewsFragViewHolder extends RecyclerView.ViewHolder {
         itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
     }
 
+     public int dpToPx(int dp) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        int px = Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+        Log.i("DP TO PX", String.format(" DP: %d, PX: %d, MH: %d, GH: %d", dp, px, itemView.getMeasuredHeight(), itemView.getHeight()));
+        return px;
+    }
+
+    //Not in use because setHeight is in PX not DP
+    public int pxToDp(int px) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        int dp = Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+        Log.i("DP TO PX", String.format("Calculated Pixel: %d Converted DP: %s", px, dp));
+        return dp;
+    }
 }
